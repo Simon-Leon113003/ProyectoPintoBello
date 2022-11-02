@@ -1,0 +1,33 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th >Nombre</th>
+            <th >Apellido</th>
+            <th >Dni</th>
+            <th >Telefono</th>
+            <th>E-mail</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Barrio</th>
+            <th >Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of   listaCliente">
+            <td>{{ cliente.idCliente}}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.dni }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>{{ cliente.mail }}</td>
+            <td>{{ cliente.fechNac }}</td>
+            <td>{{ cliente.barrio?. descripcion }}</td>
+            <td>
+                x
+            </td>
+                
+        </tr>
+    </tbody>
+</table>
+
+

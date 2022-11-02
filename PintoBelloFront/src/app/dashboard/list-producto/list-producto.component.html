@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th >Nombre</th>
+            <th >Tipo de Producto</th>
+            <th >Marca</th>
+            <th>Fecha de Vencimiento</th>
+            <th >Proveedor</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of    listProducto">
+            <td>{{ producto.idProducto}}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.tipoProducto?.descripcion}}</td>
+            <td>{{ producto. marcaBd?.descripcion}}</td>
+            <td>{{ producto.fechaVencimineto}}</td>
+            <td>{{ producto.proveedor?.nombre + ' ' +producto.proveedor?.apellido }}</td>       
+        </tr>
+    </tbody>
+</table>

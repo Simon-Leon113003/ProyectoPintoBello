@@ -1,0 +1,21 @@
+p{
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px;
+    color:#d0dfce;
+}
+
+
+.btn-xl{
+    padding: 1rem 2rem;
+    border-radius: 500px;
+    font-family: 'Nerko One', cursive;
+    font-size: 25px;
+}
+.layout{
+    background-image: url('../../assets/img/fondos/brochas.jpg');
+    background-position: center;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}

@@ -1,0 +1,36 @@
+.formucolor{
+    max-width: 60em;
+    padding: 2.5em;
+    margin: 0 auto;
+     background-color: rgba(120,119,123,0.3); 
+     /* background-image: url('../../../assets/img/fondos/ladrillo_visto.jpg'); */
+    font-weight: bold;
+    border-radius: 2.5em;
+    box-shadow: inset 1px 1px,22px 4px rgb(0,0,0,0.85);
+}
+label{
+    font-family: 'Nerko One', cursive;
+    font-size: 40px;
+    color:#5d1789;
+}
+a{
+    font-family: 'Nerko One', cursive;
+    font-size: 30px;
+}
+img{
+    width: 400px;
+    height: 400px;
+}
+navbar{
+   background-color:#5d1789 ; 
+}
+.btn-xl{
+    padding: 1rem 2rem;
+    border-radius: 500px;
+    font-family: 'Nerko One', cursive;
+    font-size: 20px;
+}
+.icono{
+    width: 40px;
+    height: 40px;
+}
