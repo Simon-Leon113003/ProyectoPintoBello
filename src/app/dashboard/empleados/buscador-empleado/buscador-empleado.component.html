@@ -1,0 +1,57 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Buscador De Empleados</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form [formGroup]="form" class="row p-3 text-white">
+                <div class="col-8">
+                    <label for="" class="form-label">Empleado</label>
+                    <input type="text" class="form-control" name="empleado" formControlName="empleado"
+                    (ngModelChange)="buscar($event)"
+                    (keydown.backspace)="borrarArray()">
+                    <!--Opciones-->
+                    <div >
+                        <ul style="list-style: none;">
+                        <li *ngFor="let e of empleados"><button class="btn text-white" (click)="cargarEmpleado(e)">{{e.nombre + " " + e.apellido}}</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="verTodos()">Ver Todos</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Apellido</th>
+                        <th class="text-center">Legajo</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">Teléfono</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Categoría</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of empleados2">
+                        <td>{{e.nombre}}</td>
+                        <td>{{e.apellido}}</td>
+                        <td>{{e.legajo}}</td>
+                        <td>{{e.dni}}</td>
+                        <td>{{e.telefono}}</td>
+                        <td>{{e.mail}}</td>
+                        <td>{{e.tipoEmpleado}}</td>
+                        <td><button class="btn text-white w-100">X</button></td>
+                        <td><button class="btn text-white w-100" (click)="eliminar(e)">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

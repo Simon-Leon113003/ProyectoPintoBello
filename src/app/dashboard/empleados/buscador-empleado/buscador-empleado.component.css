@@ -1,0 +1,8 @@
+.container-fluid{
+    min-height: 100vh;
+    background-color: #04293A;
+}
+form{
+    background-color: #041C32;
+    border-radius: 10px;
+}

@@ -1,0 +1,36 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Soporte Categoría Producto</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form class="row p-3 text-white">
+                <div class="col-9">
+                    <label for="" class="form-label">Categoría</label>
+                    <input name="descripcion" id="tipo" class="form-control" [(ngModel)]="tipoProducto.descripcion">
+
+                </div>
+                <div class="col-3">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="postTipoProducto()">Agregar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Categoría</th>
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of tipos">
+                        <td>{{t.descripcion}}</td>
+                        <td><button class="btn text-white w-100" (click)="deleteTipo(t.idTipoProducto)">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.loginForm{
+    max-width: 60em;
+    padding: 2.5em;
+    margin: 0 auto;
+    background-color: #041C32; 
+    border-radius: 2.5em;
+    box-shadow: inset 0px 0px,5px 4px rgb(0,0,0,0.85);
+}
+label{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: lighter;
+    color:#fff;
+}
+.btn-dark{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 1.3em;
+    font-weight: lighter;
+    color:#fff;
+    width: 200px;
+    background-color: #04293A;
+    border-radius: 20px;
+    border: none;
+}
+.btn-dark:hover{
+    color:#04293A;
+    background-color: #fff;
+    transition: .8s;
+
+}
+h1{
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5em;
+    color:#d0dfce;
+}
+.container-fluid{
+    background-image: url('/../assets/imgs/brochas.jpg');
+    background-position: center;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}

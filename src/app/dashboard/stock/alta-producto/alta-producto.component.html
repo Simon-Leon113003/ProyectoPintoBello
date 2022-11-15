@@ -1,0 +1,76 @@
+<div class="container-fluid py-5">
+  
+    <div>
+      <h2 class="display-4 text-center text-white">Nuevo Producto</h2>
+    </div>
+  
+    <div class="container mx-auto d-flex align-items-center h-100 py-2">
+  
+      <div class="col-lg-12 col-md-12 text-center mx-auto mt-5 fondo-form">
+        <form [formGroup]="form" class="row mx-auto p-5 text-white w-75">
+  
+          <div class="col-12 pb-3">
+             <label for="inputNombre" class="form-label">Descripción</label> 
+            <input type="text" class="form-control" id="inputNombre" 
+                  placeholder="Ingrese la descripción" name="nombre" formControlName="nombre">
+          </div>
+
+          <div class="col-md-6 pb-3">
+            <label for="inputPrecio" class="form-label">Precio</label> 
+            <input  class="form-control" type="number" name="precio" id="inputPrecio"  formControlName="precio">
+          </div>
+  
+          <div class="col-md-6 pb-3">
+            <label for="selectMarca" class="form-label">Marca</label> 
+            <select  class="form-select" name="idMarca" formControlName="idMarca">
+              <option *ngFor="let m of marcas" value="{{m.idMarca}}">{{m.descripcion}}</option>  
+            </select> 
+          </div>
+
+          <div class="col-md-6 pb-3">
+            <label for="idTipoProducto" class="form-label">Categoría</label> 
+            <select  class="form-select" name="idTipoProducto" formControlName="idTipoProducto">
+              <option *ngFor="let t of tiposProducto" value="{{t.idTipoProducto}}">{{t.descripcion}} </option>  
+            </select> 
+          </div>
+
+          <div *ngIf="form.controls['idTipoProducto'].value == 4 || form.controls['idTipoProducto'].value == 5" class="col-6 pb-3">
+            <label for="inputTamano" class="form-label">Tamaño Lts.</label> 
+           <input type="number" class="form-control" id="inputTamano" 
+                 placeholder="Ingrese los litros" name="tamano" formControlName="tamano">
+         </div>
+
+         <div *ngIf="form.controls['idTipoProducto'].value == 7" class="col-8 pb-3">
+          <label for="tamano" class="form-label">Tamaño</label> 
+          <select  class="form-select" name="tamano" formControlName="tamano">
+            <option value="0">Grande</option>  
+            <option value="1">Chico</option> 
+            <option value="2">Mediano</option> 
+          </select> 
+        </div>
+
+          <div class="col-8 pb-3">
+            <label for="idProveedor" class="form-label">Proveedor</label> 
+            <select  class="form-select" name="idProveedor" formControlName="idProveedor">
+              <option *ngFor="let p of proveedores" value="{{p.idProveedor}}">{{p.nombre + " - " + p.apellido}}</option>  
+            </select> 
+          </div>
+
+          <div class="col-4 pb-3">
+            <label for="" style="color: transparent;">boton</label>
+            <button (click)="goProveedores()" class="btn btn-primary">Agregar Nuevo Proveedor</button>
+          </div>
+  
+          <div class="row mt-5">
+            <div class="col-6 d-flex justify-content-center">
+              <button type="submit" class="btn btn-dark btn-xl" (click)="postProducto()">Guardar</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+              <button routerLink="/home" type="submit" class="btn btn-dark btn-xl ">Cancelar</button>
+            </div>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+</div>

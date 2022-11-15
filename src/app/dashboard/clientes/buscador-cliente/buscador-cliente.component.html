@@ -1,0 +1,57 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Buscador De Clientes</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form [formGroup]="form" class="row p-3 text-white">
+                <div class="col-8">
+                    <label for="" class="form-label">Cliente</label>
+                    <input type="text" class="form-control" name="cliente" formControlName="Cliente"
+                    (ngModelChange)="buscar($event)"
+                    (keydown.backspace)="borrarArray()">
+                    <!--Opciones-->
+                    <div >
+                        <ul style="list-style: none;">
+                        <li *ngFor="let c of Clientes" class="py-3"><button class="btn text-white" (click)="cargarCliente(c)">{{c.nombre + " " + c.apellido}}</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="verTodos()">Ver Todos</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Apellido</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">Telefono</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Fecha Nacimiento</th>
+                        <th class="text-center">Barrio</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of Clientes2">
+                        <td class="text-center">{{c.nombre}}</td>
+                        <td class="text-center">{{c.apellido}}</td>
+                        <td class="text-center">{{c.dni}}</td>
+                        <td class="text-center">{{c.telefono}}</td>
+                        <td class="text-center">{{c.mail}}</td>
+                        <td class="text-center">{{c.fechaNac | date}}</td>
+                        <td class="text-center">{{c.barrio}}</td>
+                        <td class="text-center"><button class="btn text-white w-100">X</button></td>
+                        <td class="text-center"><button class="btn text-white w-100" (click)="eliminar(c)">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

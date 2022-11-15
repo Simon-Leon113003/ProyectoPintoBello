@@ -1,0 +1,35 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Soporte Barrios</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form [formGroup]="form" class="row p-3 text-white">
+                <div class="col-9">
+                    <label for="Descripcion" class="form-label">Barrio</label>
+                    <input class="form-control" type="text" name="descripcion" id="Descripcion"  formControlName="descripcion">
+                </div>
+                <div class="col-3">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="postBarrio()">Agregar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Barrio</th>
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let b of barrios">
+                        <td class="text-center">{{b.descripcion}}</td>
+                        <td class="text-center"><button class="btn text-white w-100" (click)="deleteBarrio(b)">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

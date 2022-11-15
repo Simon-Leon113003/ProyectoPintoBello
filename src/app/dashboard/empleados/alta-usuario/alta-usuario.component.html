@@ -1,0 +1,64 @@
+
+<div class="container-fluid py-5">
+
+    <div>
+      <h2 class="display-4 text-center text-white">Crear Usuario</h2>
+    </div>
+  
+    <div class="container mx-auto d-flex align-items-center h-100 py-2">
+  
+      <div class="col-lg-12 col-md-12 mx-auto mt-5 fondo-form">
+        <form [formGroup]="form" class="row mx-auto p-5 text-white w-75">
+  
+            <div class="col-6 pb-3">
+                <label for="inputEmpleado" class="form-label">Empleado</label> 
+                <input type="text" class="form-control" name="empleado" formControlName="empleado"
+                    (ngModelChange)="buscar($event)"
+                    (keydown.backspace)="borrarArray()"
+                    [class.invalid]="form.controls['empleado'].touched && form.controls['empleado'].invalid"
+                  [class.valid]="form.controls['empleado'].touched && form.controls['empleado'].valid">
+                <!--Opciones-->
+                <div >
+                    <ul style="list-style: none;">
+                      <li *ngFor="let e of empleados"><button class="btn text-white" (click)="cargarEmpleado(e)">{{e.nombre + " " + e.apellido}}</button></li>
+                    </ul>
+                </div>
+            </div>
+  
+            <div class="col-6 pb-3">
+                <label for="inputUsuario" class="form-label">Usuario</label> 
+                <input type="text" class="form-control" id="inputUsuario" 
+                  placeholder="Ingrese el nombre de usuario" name="usuario" formControlName="usuario"
+                  [class.invalid]="form.controls['usuario'].touched && form.controls['usuario'].invalid"
+                  [class.valid]="form.controls['usuario'].touched && form.controls['usuario'].valid">
+            </div>
+
+            <div class="col-6 pb-3">
+                <label for="inputContrasena" class="form-label">Contraseña</label> 
+                <input type="password" class="form-control" id="inputContrasena" 
+                  placeholder="Ingrese una contraseña" name="contrasena" formControlName="contrasena"
+                  [class.invalid]="form.controls['contrasena'].touched && form.controls['contrasena'].invalid"
+                  [class.valid]="form.controls['contrasena'].touched && form.controls['contrasena'].valid">
+            </div>
+  
+            <div class="col-6 pb-3">
+                <label for="inputConfirm" class="form-label">Confirmar Contraseña</label> 
+                <input type="password" class="form-control" id="inputConfirm" 
+                  placeholder="Repita la contraseña" name="confirmar"  formControlName="confirmar"
+                  [class.invalid]="form.controls['confirmar'].touched && form.controls['confirmar'].invalid"
+                  [class.valid]="form.controls['confirmar'].touched && form.controls['confirmar'].valid">
+            </div>
+  
+        <div class="row mt-5">
+            <div class="col-6 d-flex justify-content-center">
+              <button (click)="guardarUser()" type="submit" class="btn btn-dark btn-xl">Guardar</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+              <button routerLink="/home" type="submit" class="btn btn-dark btn-xl ">Cancelar</button>
+            </div>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+</div>

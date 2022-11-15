@@ -1,0 +1,205 @@
+<div class="container-fluid py-5">
+  <!--Form title-->
+    <div>
+        <h2 class="display-4 text-center text-white">Nueva Venta</h2>
+    </div>
+
+    <div class="container mx-auto">
+
+      <div class="col-12 mt-5">
+
+        <form [formGroup]="form" class="row mx-auto text-white w-75 p-5">
+          <div class="col-12 row pb-3">
+            <!--Input Cliente-->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <label for="" class="form-label">Cliente</label>
+              <input type="text" class="form-control" name="cliente" formControlName="cliente"
+              (ngModelChange)="buscarC($event)"
+              (keydown.backspace)="borrarArrayC()">
+              <!--Opciones-->
+              <div >
+                  <ul style="list-style: none;">
+                  <li *ngFor="let c of Clientes" class="py-3"><button class="btn text-white" (click)="cargarCliente(c)">{{c.nombre + " " + c.apellido}}</button></li>
+                  </ul>
+              </div>
+            </div>
+            <!--Input Vendedor-->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <label for="" class="form-label">Vendedor</label>
+              <input type="text" class="form-control" name="vendedor" formControlName="vendedor"
+              (ngModelChange)="buscarE($event)"
+              (keydown.backspace)="borrarArrayE()">
+              <!--Opciones-->
+              <div >
+                  <ul style="list-style: none;">
+                  <li *ngFor="let e of empleados"><button class="btn text-white" (click)="cargarEmpleado(e)">{{e.nombre + " " + e.apellido}}</button></li>
+                  </ul>
+              </div>
+              </div>
+          </div>
+
+          <div class="col-12 row pb-3">
+            <!--Input Producto-->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <label for="selectProducto" id="productoSelect" class="form-label">Producto</label>
+              <input class="form-control" name="idProducto" formControlName="producto"
+              (keydown.backspace)="borrarArray()"
+              (ngModelChange)="buscar($event)">
+              <!--Opciones-->
+              <div >
+                <ul style="list-style: none;">
+                  <li *ngFor="let p of productos"><button class="btn text-white" (click)="cargarProducto(p.nombre, p)">{{p.nombre + " - " + p.marca + " - " + p.tamano}}</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-12 row pb-3">
+            <!--Input Cantidad-->
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <label for="inputCantidad" class="form-label">Cantidad</label>
+              <input type="number" class="form-control" id="inputCantidad" name="cantidad" formControlName="cantidad">
+            </div>
+            <!--Input Form de pago-->
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <label for="selecFormasPago" class="form-label">Forma de Pago</label>
+              <select required class="form-select" name="idFormasPago" formControlName="formaPago">
+                <option value="0">
+                  Seleccione una opción
+                </option>
+                <option value="1">
+                  Efectivo
+                </option>
+                <option value="2">
+                  Credito
+                </option>
+                <option value="3">
+                  Debito
+                </option>
+                <option value="5">
+                  Mercado Pago
+                </option>
+              </select>
+            </div>
+            <!--Button Agregar Detalle-->
+            <div class="col-12">
+              <label for="" class="form-label" style="color: transparent;">ajuste</label>
+              <button class="btn btn-dark form-control" (click)="agregarDetalle()">Agregar Detalle</button>
+            </div>     
+          </div>
+  
+  
+          <div class="sm-3 pb-3">
+            <table class="table table-striped text-white">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
+                  <th>Importe</th>
+                  <th>Quitar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let d of detalles">
+                  <td class="text-white">{{d.producto.nombre + " - " + d.producto.marca}}</td>
+                  <td class="text-white">{{d.cantidad}}</td>
+                  <td class="text-white">{{d.producto.precio}}</td>
+                  <td class="text-white">{{d.cantidad * d.producto.precio}}</td>
+                  <td>
+                    <button class="btn text-white">X</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row pt-2 pb-5">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <label for="inputTotal" class="form-label">Total $</label>
+              <input type="number" class="form-control" id="inputTotal" name="total" formControlName="total">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+              <button type="submit" class="btn btn-dark btn-xl" (click)="cobrarFactura()">Cobrar Pedido</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+              <button type="submit" class="btn btn-dark btn-xl" (click)="ngOnInit()">Cancelar Pedido</button>
+            </div>
+          </div>
+        </form>
+  
+      </div>
+
+      <div class="container mx-auto h-100">
+        <div *ngIf="cobrar == 5" class="mx-auto w-50 mt-5">
+          <form class="row p-5" action="">
+            <div class="col-12 d-flex flex-column justify-content-center aling-items-ceneter">
+              <h4 class="form-label text-white w-100 text-center" for="">Forma de Pago: Mercado Pago</h4> <br>
+              <img class="mx-auto" src="https://th.bing.com/th/id/R.2c7a6211e0ab5bbf26eb13285bde4678?rik=guzQuKYy4F4evA&pid=ImgRaw&r=0" alt="" width="300px" ><br>
+              <label for="" class="form-label text-white">Total</label>
+              <input class="form-control" type="number" name="total" [(ngModel)]="total"><br>
+              <button class="btn btn-primary mt-5" (click)="agregarFactura()">Confirmar</button>
+            </div>
+          </form>
+        </div>
+  
+        <div *ngIf="cobrar == 1" class="mx-auto w-50 mt-5">
+          <form class="row p-5" action="">
+            <div class="col-12 d-flex flex-column justify-content-center aling-items-ceneter">
+              <h4 class="form-label text-white w-100 text-center" for="">Forma de Pago: Efectivo</h4> <br>
+              <label for="" class="form-label text-white">Total</label>
+              <input class="form-control" type="number" name="total" [(ngModel)]="total">
+              <button class="btn btn-primary mt-5" (click)="agregarFactura()">Confirmar</button>
+            </div>
+          </form>
+        </div>
+  
+        <div *ngIf="cobrar == 2 || cobrar == 3" class="mx-auto w-75 mt-5">
+          <form class="row p-5" action="">
+            <h4 class="form-label text-white w-100 text-center pb-4" for="">Forma de Pago: Tarjeta Crédito/Débito</h4> 
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">Entidad Bancaria</label>
+              <select class="form-control" name="" id="">
+                <option value="1">Seleccione una opción...</option>
+                <option value="1">Santander</option>
+                <option value="1">Galicia</option>
+                <option value="1">Banco Nación</option>
+              </select>
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">Cantidad de Cuotas</label>
+              <select class="form-control" name="" id="">
+                <option value="1">1</option>
+                <option value="1">3</option>
+                <option value="1">6</option>
+              </select>
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">N° de Tarjeta</label>
+              <input class="form-control" type="number" >
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">Nombre de la Tarjeta</label>
+              <input class="form-control" type="text" >
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">Fecha de Vencimiento</label>
+              <input class="form-control" type="date" >
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">Código de Seguridad</label>
+              <input class="form-control" type="number" >
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center aling-items-ceneter pb-4">
+              <label class="form-label text-white" for="">Total con 10% de Recarga</label>
+              <input class="form-control" type="number" name="totalDC" [(ngModel)]="totalDC">
+            </div>
+            <div class="col-12 d-flex flex-column justify-content-center aling-items-ceneter">
+              <button class="btn btn-primary mt-5" (click)="agregarFactura()">Confirmar</button>
+            </div>
+          </form>
+        </div>
+      
+    </div>
+  </div>

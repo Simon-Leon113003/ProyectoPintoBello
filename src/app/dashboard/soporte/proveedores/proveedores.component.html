@@ -1,0 +1,71 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Soporte Proveedores</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form [formGroup]="form" class="row p-5 text-white">
+                <div class="col-6 pb-3">
+                    <label for="" class="form-label">Nombre</label>
+                    <input name="nombre" id="nombre" class="form-control" formControlName="nombre"
+                    [class.invalid]="form.controls['nombre'].touched && form.controls['nombre'].invalid"
+                  [class.valid]="form.controls['nombre'].touched && form.controls['nombre'].valid">
+                </div>
+                <div class="col-6 pb-3">
+                    <label for="" class="form-label">Productos</label>
+                    <input name="apellido" id="apellido" class="form-control" formControlName="apellido"
+                    [class.invalid]="form.controls['apellido'].touched && form.controls['apellido'].invalid"
+                  [class.valid]="form.controls['apellido'].touched && form.controls['apellido'].valid">
+                </div>
+                <div class="col-6 pb-3">
+                    <label for="" class="form-label">Telefono</label>
+                    <input name="telefono" id="telefono" class="form-control" formControlName="telefono"
+                    [class.invalid]="form.controls['telefono'].touched && form.controls['telefono'].invalid"
+                  [class.valid]="form.controls['telefono'].touched && form.controls['telefono'].valid">
+                </div>
+                <div class="col-6 pb-3">
+                    <label for="" class="form-label">CUIL</label>
+                    <input name="dni" id="dni" class="form-control" formControlName="dni"
+                    [class.invalid]="form.controls['dni'].touched && form.controls['dni'].invalid"
+                  [class.valid]="form.controls['dni'].touched && form.controls['dni'].valid">
+                </div>
+                <div class="col-6">
+                    <label for="" class="form-label">Email</label>
+                    <input name="mail" id="mail" class="form-control" formControlName="mail"
+                    [class.invalid]="form.controls['mail'].touched && form.controls['mail'].invalid"
+                  [class.valid]="form.controls['mail'].touched && form.controls['mail'].valid">
+                </div>
+                <div class="col-6">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="postProveedor()">Agregar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Productos</th>
+                        <th class="text-center">Telefono</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of lista">
+                        <td>{{p.nombre}}</td>
+                        <td>{{p.apellido}}</td>
+                        <td>{{p.telefono}}</td>
+                        <td>{{p.dni}}</td>
+                        <td>{{p.mail}}</td>
+                        <td><button class="btn text-white w-100">X</button></td>
+                        <td><button class="btn text-white w-100" (click)="deleteProveedor(p.idProveedor)">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

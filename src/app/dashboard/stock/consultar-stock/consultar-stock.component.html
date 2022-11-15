@@ -1,0 +1,59 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Buscador De Productos</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form [formGroup]="form" class="row p-3 text-white">
+                <div class="col-8">
+                    <label for="" class="form-label">Producto</label>
+                    <input type="text" class="form-control" name="producto" formControlName="Producto"
+                    (ngModelChange)="buscar($event)"
+                    (keydown.backspace)="borrarArray()">
+                    <!--Opciones-->
+                    <div >
+                        <ul style="list-style: none;">
+                        <li *ngFor="let p of Productos" class="py-3"><button class="btn text-white" (click)="cargarProducto(p)">{{p.nombre + " " + p.marca + " - " + p.tamano + "Lts"}}</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="verTodos()">Ver Todos</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Producto</th>
+                        <th class="text-center">Marca</th>
+                        <th class="text-center">Categoría</th>
+                        <th class="text-center">Precio</th>
+                        <th class="text-center">Precio Compra</th>
+                        <th class="text-center">Stock</th>
+                        <th class="text-center">Tamaño</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let p of Productos2">
+                        <td>{{p.nombre}}</td>
+                        <td>{{p.marca}}</td>
+                        <td>{{p.tipoProducto}}</td>
+                        <td>{{p.precio}}</td>
+                        <td>{{p.precioCompra}}</td>
+                        <td *ngIf="p.stock > 5">{{p.stock}}</td>
+                        <td *ngIf="p.stock <= 5" style="color: red;">{{p.stock}} - reponer</td>
+                        <td *ngIf="p.tipoProducto != 'Herramienta'">{{p.tamano}} Lts</td>
+                        <td *ngIf="p.tipoProducto == 'Herramienta'">{{getTamano(p.tamano)}}</td>
+                        <td><button class="btn text-white w-100">X</button></td>
+                        <td><button class="btn text-white w-100" (click)="eliminar(p)">X</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

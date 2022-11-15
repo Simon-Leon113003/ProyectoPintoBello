@@ -1,0 +1,31 @@
+<div class="container-fluid py-5  d-flex align-items-center">
+    <div class="container h-100 row py-5 mx-auto d-flex justify-content-center align-items-center">
+<!--Columna H1-->
+      <div class="col-lg-6 col-md-12 pb-5 d-flex justify-content-center align-items-center">
+        <h1>Pinto Bello S.A.</h1>
+      </div>
+<!--Columna Login Form-->
+      <div class="col-lg-6 col-md-12 pb-5 d-flex justify-content-center align-items-center">     
+        <form [formGroup]="form" class="loginForm row">
+<!--Input Usuario-->
+          <div class="col-12 mb-3">
+            <label for="inputUsuario" class="form-label text-center w-100">Usuario</label>
+            <input type="text" class="form-control" id="inputUsuario" formControlName="usuario"
+            [class.invalid]="form.controls['usuario'].touched && form.controls['usuario'].invalid"
+            [class.valid]="form.controls['usuario'].touched && form.controls['usuario'].valid">
+          </div>
+<!--Input Contraseña-->
+          <div class="col-12 mb-4">
+            <label for="inputPassword" class="form-label text-center w-100">Contraseña</label>
+            <input type="password" class="form-control" id="inputPassword" formControlName="contrasena"
+            [class.invalid]="form.controls['contrasena'].touched && form.controls['contrasena'].invalid"
+            [class.valid]="form.controls['contrasena'].touched && form.controls['contrasena'].valid">
+          </div>
+  <!--Boton de confirmacion-->
+          <div class="col-12 d-flex justify-content-center">
+            <button *ngIf="!sesion" (click)="goHome()" type="submit" class="btn btn-dark" >Ingresar</button>
+          </div>
+        </form>     
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,63 @@
+<section>
+    <div class="container-fluid py-5">
+        <div>
+            <h2 class="display-4 text-center text-white">Pedido A Compras</h2>
+        </div>
+        <div class="container mx-auto py-5">
+            <form [formGroup]="form" action="" class="row text-white p-5">
+                <div class="col-8 pb-3">
+                    <label class="form-label" for="">Proveedor</label>
+                    <select class="form-select" name="proveedor" formControlName="proveedor">
+                        <option *ngFor="let p of proveedores" value="{{p.idProveedor}}">{{p.nombre + " - " + p.apellido}}</option>
+                    </select>
+                </div>
+                <div class="col-4 pb-3">
+                    <label class="form-label" for="">Precio Compra</label>
+                    <input class="form-control" type="number" formControlName="precioCompra">
+                </div>
+                <div class="col-6 pb-3">
+                    <label class="form-label" for="">Producto</label>
+                    <select class="form-select" name="idProducto" formControlName="idProducto">
+                        <option *ngFor="let p of productos" value="{{p.idProducto}}">{{p.nombre + " - " + p.marca}}</option>
+                    </select>
+                </div>
+                <div class="col-3 pb-3">
+                    <label class="form-label" for="">Cantidad</label>
+                    <input class="form-control" type="number" formControlName="stock">
+                </div>
+                <div class="col-3 pb-3">
+                    <label class="form-label" for="" style="color: transparent;">ajuste</label>
+                    <button class="form-control btn btn-primary" (click)="pushProducto()">Agregar Producto</button>
+                </div>
+                <div class="col-12 pb-3">
+                    <table class="table text-white">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Importe</th>
+                                <th>Quitar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of productosEdit">
+                                <td>{{p.idProducto}}</td>
+                                <td>{{p.stock}}</td>
+                                <td>{{p.stock * p.precioCompra}}</td>
+                                <td>X</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 row">
+                    <div class="col-6 px-3">
+                        <button class="form-control btn btn-primary" (click)="putProducto()" >Enviar Pedido</button>
+                    </div>
+                    <div class="col-6 px-3">
+                        <button class="form-control btn btn-primary">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

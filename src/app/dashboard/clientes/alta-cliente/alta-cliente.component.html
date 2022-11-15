@@ -1,0 +1,92 @@
+<div class="container-fluid py-5">
+
+    <div>
+      <h2 class="display-4 text-center text-white">Nuevo Cliente</h2>
+    </div>
+  
+    <div class="container mx-auto d-flex align-items-center h-100 py-2">
+
+      <div class="col-lg-12 col-md-12 mx-auto mt-5 fondo-form">
+        <form [formGroup]="form" class="row mx-auto p-5 text-white w-75">
+  
+          <div class="col-6 pb-3">
+             <label for="inputNombre" class="form-label">Nombre</label> 
+            <input type="text" class="form-control" id="inputNombre" 
+                  placeholder="Ingrese el Nombre" name="nombre"  formControlName="nombre"
+                  [class.invalid]="form.controls['nombre'].touched && form.controls['nombre'].invalid"
+                  [class.valid]="form.controls['nombre'].touched && form.controls['nombre'].valid">
+          </div>
+  
+          <div class="col-6 pb-3">
+            <label for="inputApellido" class="form-label">Apellido</label> 
+           <input type="text" class="form-control" id="inputApellido" 
+                  placeholder="Ingrese el Nombre" name="apellido"   formControlName="apellido"
+                  [class.invalid]="form.controls['apellido'].touched && form.controls['apellido'].invalid"
+                  [class.valid]="form.controls['apellido'].touched && form.controls['apellido'].valid">
+         </div>
+         <!--Input Tipo Doc-->
+         <div class="col-6 pb-3">
+          <label for="inputDni" class="form-label">Tipo Documento</label> 
+          <select class="form-select" id="inputTipoDni" 
+            placeholder="Ingrese el Documento" name="dni" formControlName="dni"
+            [class.invalid]="form.controls['dni'].touched && form.controls['dni'].invalid"
+            [class.valid]="form.controls['dni'].touched && form.controls['dni'].valid">
+            <option value="1">DNI</option>
+            <option value="2">Pasaporte</option>
+            <option value="3">Otro</option>
+          </select>
+        </div>
+        
+         <div class="col-6 pb-3">
+          <label for="inputDni" class="form-label">DNI</label> 
+         <input type="text" class="form-control" id="inputDni" 
+                placeholder="Ingrese el Documento" name="dni"  formControlName="dni"
+                [class.invalid]="form.controls['dni'].touched && form.controls['dni'].invalid"
+                [class.valid]="form.controls['dni'].touched && form.controls['dni'].valid">
+        </div>
+  
+        <div class="col-md-6 pb-3">
+        <label for="inputTelefono" class="form-label">Telefono</label> 
+        <input type="text" class="form-control" id="inputTelefono" 
+              placeholder="Ingrese su Telefono" name="telefono"  formControlName="telefono"
+              [class.invalid]="form.controls['telefono'].touched && form.controls['telefono'].invalid"
+              [class.valid]="form.controls['telefono'].touched && form.controls['telefono'].valid">
+        </div>
+     
+        <div class="col-md-6 pb-3">
+          <label for="inputMail" class="form-label">Email</label> 
+        <input type="email" class="form-control" id="inputMail"
+              placeholder="Ingrese el Email" name="mail"  formControlName="mail"
+              [class.invalid]="form.controls['telefono'].touched && form.controls['telefono'].invalid"
+              [class.valid]="form.controls['telefono'].touched && form.controls['telefono'].valid">
+        </div>
+  
+        <div class="col-md-6 pb-3">
+          <label for="inputFechaNaciminento" class="form-label">Fecha Nacimineto</label> 
+          <input type="date" class="form-control" id="inputFechaNaciminento" name="fechNac"  formControlName="fechaNac"
+          [class.invalid]="form.controls['fechaNac'].touched && form.controls['fechaNac'].invalid"
+          [class.valid]="form.controls['fechaNac'].touched && form.controls['fechaNac'].valid">
+        </div>
+  
+        <div class="col-md-6 pb-3">
+          <label for="selectBarrio" class="form-label">Barrio</label> 
+          <select class="form-select" name="idBarrios"   formControlName="idBarrios"
+          [class.invalid]="form.controls['idBarrios'].touched && form.controls['idBarrios'].invalid"
+          [class.valid]="form.controls['idBarrios'].touched && form.controls['idBarrios'].valid">
+            <option *ngFor="let b of barrios" value="{{b.id}}">{{b.descripcion}}</option>  
+          </select> 
+        </div>
+  
+          <div class="row mt-5">
+            <div class="col-6 d-flex justify-content-center">
+              <button (click)="postCliente()" type="submit" class="btn btn-dark btn-xl">Guardar</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+              <button routerLink="/home" type="submit" class="btn btn-dark btn-xl ">Cancelar</button>
+            </div>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container-fluid py-5">
+
+    <div>
+      <h2 class="display-4 text-center text-white">Nuevo Empleado</h2>
+    </div>
+  
+    <div class="container mx-auto d-flex align-items-center h-100 py-2">
+  
+      <div class="col-lg-12 col-md-12 mx-auto mt-5 fondo-form">
+        <form [formGroup]="form" class="row mx-auto p-5 text-white w-75">
+  <!--Input Nombre-->
+            <div class="col-6 pb-3">
+                <label for="inputNombre" class="form-label">Nombre</label> 
+                <input type="text" class="form-control" id="inputNombre" 
+                  placeholder="Ingrese el Nombre" name="nombre" formControlName="nombre"
+                  [class.invalid]="form.controls['nombre'].touched && form.controls['nombre'].invalid"
+                  [class.valid]="form.controls['nombre'].touched && form.controls['nombre'].valid">
+            </div>
+   <!--Input Apellido-->
+            <div class="col-6 pb-3">
+                <label for="inputApellido" class="form-label">Apellido</label> 
+                <input type="text" class="form-control" id="inputApellido" 
+                  placeholder="Ingrese el Apellido" name="apellido" formControlName="apellido"
+                  [class.invalid]="form.controls['apellido'].touched && form.controls['apellido'].invalid"
+                  [class.valid]="form.controls['apellido'].touched && form.controls['apellido'].valid">
+            </div>
+ <!--Input Legajo-->
+            <div class="col-6 pb-3">
+                <label for="inputLegajo" class="form-label">Legajo</label> 
+                <input type="number" class="form-control" id="inputLegajo" 
+                  placeholder="Ingrese el Legajo" name="legajo" formControlName="legajo"
+                  [class.invalid]="form.controls['legajo'].touched && form.controls['legajo'].invalid"
+                  [class.valid]="form.controls['legajo'].touched && form.controls['legajo'].valid">
+            </div>
+   <!--Input Categoria-->
+            <div class="col-6 pb-3">
+                <label for="selectCategoria" class="form-label">Rol</label> 
+                <select name="categoria" class="form-select" id="selectCategoria" formControlName="idTipoEmpleado"
+                [class.invalid]="form.controls['idTipoEmpleado'].touched && form.controls['idTipoEmpleado'].invalid"
+                [class.valid]="form.controls['idTipoEmpleado'].touched && form.controls['idTipoEmpleado'].valid">
+                  <option *ngFor="let t of tiposEmpleado" value="{{t.idTipoEmpleado}}">{{t.tipo}}</option>
+                </select>
+            </div>
+        <!--Input Tipo Doc-->
+            <div class="col-6 pb-3">
+              <label for="inputDni" class="form-label">Tipo Documento</label> 
+              <select class="form-select" id="inputTipoDni" 
+                placeholder="Ingrese el Documento" name="dni" formControlName="dni"
+                [class.invalid]="form.controls['dni'].touched && form.controls['dni'].invalid"
+                [class.valid]="form.controls['dni'].touched && form.controls['dni'].valid">
+                <option value="1">DNI</option>
+                <option value="2">Pasaporte</option>
+                <option value="3">Otro</option>
+              </select>
+            </div>
+  <!--Input DNI-->
+            <div class="col-6 pb-3">
+                <label for="inputDni" class="form-label">Documento</label> 
+                <input type="number" class="form-control" id="inputDni" 
+                placeholder="Ingrese el Documento" name="dni" formControlName="dni"
+                [class.invalid]="form.controls['dni'].touched && form.controls['dni'].invalid"
+                [class.valid]="form.controls['dni'].touched && form.controls['dni'].valid">
+            </div>
+  <!--Input Telefono-->
+        <div class="col-md-6 pb-3">
+            <label for="inputTelefono" class="form-label">Telefono</label> 
+            <input type="number" class="form-control" id="inputTelefono" 
+              placeholder="Ingrese su Telefono" name="telefono" formControlName="telefono"
+              [class.invalid]="form.controls['telefono'].touched && form.controls['telefono'].invalid"
+              [class.valid]="form.controls['telefono'].touched && form.controls['telefono'].valid">
+        </div>
+     <!--Input Email-->
+        <div class="col-md-6 pb-3">
+            <label for="inputEmail" class="form-label">Email</label> 
+            <input type="email" class="form-control" id="inputEmail"
+              placeholder="Ingrese el Email" name="email" formControlName="mail"
+              [class.invalid]="form.controls['mail'].touched && form.controls['mail'].invalid"
+              [class.valid]="form.controls['mail'].touched && form.controls['mail'].valid">
+        </div>
+        <!--Input checkUser-->
+        <div class="col-md-12 pb-3">
+          <label for="checkUser" class="form-label me-3 mt-4">Agregar Usuario</label> 
+          <input type="checkbox" id="checkUser" name="check" formControlName="check">
+        </div>
+
+        <!--Input Usuario-->
+        <div *ngIf="form.controls['check'].value" class="col-md-6 pb-3">
+          <label for="inputEmail" class="form-label">Usuario</label> 
+          <input type="text" class="form-control" id="inputPass"
+            placeholder="Ingrese el Usuario" name="usuario" formControlName="usuario">
+      </div>
+
+      <!--Input Contraseña-->
+      <div *ngIf="form.controls['check'].value" class="col-md-6 pb-3">
+        <label for="inputPass" class="form-label">Contraseña</label> 
+        <input type="password" class="form-control" id="inputEmail"
+          placeholder="Ingrese la Contraseña" name="contrasena" formControlName="contrasena">
+    </div>
+  
+        <div class="row mt-5">
+            <div class="col-6 d-flex justify-content-center">
+              <button (click)="postEmpleado()" type="submit" class="btn btn-dark btn-xl">Guardar</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+              <button (click)="ngOnInit()" type="reset" class="btn btn-dark btn-xl ">Cancelar</button>
+            </div>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+</div>

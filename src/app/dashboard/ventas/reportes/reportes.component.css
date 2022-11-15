@@ -1,0 +1,22 @@
+section{
+    background-color: #04293A;
+    min-height: 100vh;
+}
+.container-fluid{
+    min-height: 100vh;
+}
+label{
+    color: #fff;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+i{
+    color: #064663;
+    font-size: 5em;
+}
+i:hover{
+    color: #fff;
+    font-size: 5.5em;
+    transition: .5s;
+}

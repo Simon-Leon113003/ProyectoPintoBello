@@ -1,0 +1,61 @@
+<div class="container-fluid py-3">
+    <div class="container row mx-auto py-5">
+        <div class="col-12 pb-5">
+            <h2 class="display-4 text-center text-white">Buscador De Facturas</h2>
+        </div>
+        <div class="col-12 pb-5">
+            <form class="row p-3 text-white">
+                <div class="col-3">
+                    <label for="" class="form-label">Cliente</label>
+                    <input type="text" class="form-control" name="cliente"
+                    (ngModelChange)="buscarCliente($event)"
+                    (keydown.backspace)="borrarArray()">
+                    <!--Opciones-->
+                    <div >
+                        <ul style="list-style: none;">
+                        <li *ngFor="let c of clientes" class="py-3"><button class="btn text-white" (click)="cargarCliente()">{{c}}</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="" class="form-label">Empleado</label>
+                    <select name="" id="" class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <label for="" class="form-label">Fecha</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-3">
+                    <label for="" class="form-label" style="color: transparent;">ajuste</label>
+                    <button class="btn btn-primary form-control" (click)="verTodo()">Ver Todo</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">Empleado</th>
+                        <th class="text-center">Forma De Pago</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Total</th>
+                        <th class="text-center">Ver Productos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of facturas1">
+                        <td>{{f.cliente}}</td>
+                        <td>{{f.empleado}}</td>
+                        <td>{{f.formasPago}}</td>
+                        <td>{{f.fecha | date}}</td>
+                        <td>{{f.total}}</td>
+                        <td class="d-flex justify-content-center"><button class="btn btn-primary text-white w-50 ver">Ver</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
