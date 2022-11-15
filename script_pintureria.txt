@@ -1,0 +1,55 @@
+use  pintureria
+select * from barrios
+insert into barrios(descripcion) values('Nva Cordoba');
+insert into barrios(descripcion) values('Alta Cordoba');
+insert into barrios(descripcion) values('Villa Cabrera');
+insert into barrios(descripcion) values('Patricios');
+insert into barrios(descripcion) values('Ituzango');
+insert into barrios(descripcion) values('Nva Cordoba');
+insert into barrios(descripcion) values('Alta Cordoba');
+insert into barrios(descripcion) values('Villa Cabrera');
+insert into barrios(descripcion) values('Patricios');
+insert into barrios(descripcion) values('Ituzango');
+insert into barrios(descripcion) values('Nva Cordoba');
+insert into barrios(descripcion) values('Alta Cordoba');
+insert into barrios(descripcion) values('Villa Cabrera');
+insert into barrios(descripcion) values('Patricios');
+insert into barrios(descripcion) values('Ituzango');
+insert into barrios(descripcion) values('Puerredon');
+insert into barrios(descripcion) values('Centro');
+insert into barrios(descripcion) values('Guemes');
+insert into barrios(descripcion) values('Empalme');
+insert into barrios(descripcion) values('Talleres');
+insert into barrios(descripcion) values('Villa Belgrano');
+insert into barrios(descripcion) values('Don Bosco');
+insert into barrios(descripcion) values('Alto Aberdi');
+insert into barrios(descripcion) values('San Carlos');
+insert into barrios(descripcion) values('Cabildo');
+
+
+select * from marca
+insert into marca(descripcion) values('Sherwin Williams');
+insert into marca(descripcion) values('Colorin');
+insert into marca(descripcion) values('Rust Oleum');
+insert into marca(descripcion) values('Plavicon');
+insert into marca(descripcion) values('Cetol');
+insert into marca(descripcion) values('Petrilac');
+insert into marca(descripcion) values('Petrilac');
+insert into marca(descripcion) values('Danzke');
+
+select * from tipo_empleado
+insert into tipo_empleado(tipo) values('Vendedor');
+insert into tipo_empleado(tipo) values('Cajero');
+insert into tipo_empleado(tipo) values('Encargado de Deposito');
+insert into tipo_empleado(tipo) values('Gerente');
+insert into tipo_empleado(tipo) values('Admin');
+
+select * from tipo_producto
+insert into tipo_producto(descripcion) values('Insumos');
+insert into tipo_producto(descripcion) values('Pintura');
+insert into tipo_producto(descripcion) values('Herramienta');
+
+select * from formas_pago
+insert into formas_pago(descripcion) values('Efectivo');
+insert into formas_pago(descripcion) values('Credito');
+insert into formas_pago(descripcion) values('Debito');
